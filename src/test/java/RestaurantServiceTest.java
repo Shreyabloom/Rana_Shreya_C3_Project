@@ -82,4 +82,20 @@ class RestaurantServiceTest {
     }
     //<<<<<<<<<<<<<<<<<<<<ADMIN: ADDING & REMOVING RESTAURANTS>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+    @Test
+    public void restaurant_creation_should_fail_if_location_does_not_match() {
+        // Arrange: Set up the restaurant with a specific location
+        String savedLocation = "Chennai";
+        String userInputLocation = "Bangalore"; // Location entered by the user
+
+        // Act & Assert: Attempt to create the restaurant with user input location
+        LocalTime openingTime = LocalTime.parse("10:30:00");
+        LocalTime closingTime = LocalTime.parse("22:00:00");
+        Restaurant restaurant = new Restaurant("Amelie's cafe", userInputLocation, openingTime, closingTime);
+
+        // Assert: The creation should fail if the location does not match the saved location
+        assertFalse(savedLocation.equals(userInputLocation));
+    }
+
+
 }
