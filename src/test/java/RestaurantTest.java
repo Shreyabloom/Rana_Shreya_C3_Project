@@ -94,4 +94,16 @@ class RestaurantTest {
         assertEquals(expectedTotal, actualTotal);
     }
 
+    @Test
+    public void calculate_order_value_should_not_return_total_for_given_items() {
+        // Arrange
+        int expectedTotal = 1000; // Intentionally set a wrong expected total
+
+        // Act
+        int actualTotal = restaurant.calculateOrderValue("Sweet corn soup", "Vegetable lasagne");
+
+        // Assert
+        assertFalse(expectedTotal == actualTotal); // Intentional failure, but test still passes
+    }
+
 }
